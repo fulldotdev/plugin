@@ -5,7 +5,7 @@ Work with your Fulldev organization from your AI assistant: find, create and upd
 This plugin holds two things:
 
 - **The Fulldev connector**, the remote MCP server at `https://app.full.dev/mcp`, run by Fulldev. It is the only service the plugin connects to.
-- **The `fulldev` skill**, which explains to the assistant how Fulldev works: start with the overview, describe a type or an action before using it, update with the revision it read, confirm actions that send or invite with you first, and retry a write with the same idempotency key. In a terminal without the connector, the skill uses the [Fulldev CLI](https://www.npmjs.com/package/fulldev) instead.
+- **The `fulldev` skill**, which explains to the assistant how Fulldev works: use the tools of each app, such as work_list_tasks, update with the revision it read, confirm actions that send or invite with you first, and retry a write with the same idempotency key. In a terminal without the connector, the skill uses the [Fulldev CLI](https://www.npmjs.com/package/fulldev) instead.
 
 The plugin runs no code on your computer and has no hooks.
 

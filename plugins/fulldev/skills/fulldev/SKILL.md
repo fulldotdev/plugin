@@ -1,6 +1,6 @@
 ---
 name: fulldev
-description: Work with the person's Fulldev data and actions in their organization, through the Fulldev tools when they are connected and otherwise the Fulldev CLI. Use it for their tasks and projects in Fulldev Work; for their own profile and, as an owner or admin, the organization's members, invitations and teams; and for their own business tools, such as Google or Shopify, through Fulldev Connect's actions. Also use it for what the organization's other Fulldev products add, such as websites, scans, conversations, meetings, documents and contacts, once the overview lists them. What you can do comes from what the person may use.
+description: Work with the person's Fulldev data and actions in their organization, through the Fulldev tools when they are connected and otherwise the Fulldev CLI. Use it for their tasks and projects in Fulldev Work; for their own profile and, as an owner or admin, the organization's members, invitations and teams; and for their own business tools, such as Google or Shopify, through Fulldev Connect's actions. Also use it for what the organization's other Fulldev products add, such as websites, scans, conversations, meetings, documents and contacts, once the tools or the CLI's overview list them. What you can do comes from what the person may use.
 license: MIT
 compatibility: The Fulldev tools need the Fulldev connector (https://app.full.dev/mcp); the CLI needs Node.js 24 or later and network access to app.full.dev.
 ---
@@ -14,21 +14,23 @@ Two routes reach the same catalog with the same rules:
 - **The Fulldev tools**, when the Fulldev connector is connected in this app: use them.
 - **The `fulldev` CLI**, otherwise, in a terminal: `fulldev` when it is installed, else `npx -y fulldev <command>`. Add `--json` to every command whose result you read.
 
-| Step                              | Tool                            | CLI                                                     |
-| --------------------------------- | ------------------------------- | ------------------------------------------------------- |
-| What you may use                  | `overview`                      | `fulldev overview --json`                               |
-| A type's or an action's contract  | `describe`                      | `fulldev describe tasks --json`, `fulldev tasks --help` |
-| Find rows by text                 | `search`                        | `fulldev tasks search "launch plan" --json`             |
-| Rows by filters, a page at a time | `list`                          | `fulldev tasks list --status open --json`               |
-| One row with all it has           | `get`                           | `fulldev tasks get <id> --json`                         |
-| Create or change a row            | `create`, `update`              | `fulldev tasks create ...`, `fulldev tasks update ...`  |
-| Run an action                     | `run_action`                    | `fulldev run complete_task ... --json`                  |
-| A service's settings and status   | `get_service`, `update_service` | `fulldev services get scan --json`                      |
-| A service's read-only queries     | `query_service`                 | `fulldev services query scan findings ... --json`       |
+The tools are named after their app, `<app>_<verb>_<object>`, and you get only those the person may use, each with its own input:
 
-## Start with the overview
+| Step                              | Tool                                   | CLI                                                     |
+| --------------------------------- | -------------------------------------- | ------------------------------------------------------- |
+| What you may use                  | `account_get` and the tools you get    | `fulldev overview --json`                               |
+| A type's or an action's contract  | The tool's input                       | `fulldev describe tasks --json`, `fulldev tasks --help` |
+| Find rows by text                 | `work_search`, `contacts_search`       | `fulldev tasks search "launch plan" --json`             |
+| Rows by filters, a page at a time | `work_list_tasks`                      | `fulldev tasks list --status open --json`               |
+| One row with all it has           | `work_get_task`                        | `fulldev tasks get <id> --json`                         |
+| Create or change a row            | `work_create_task`, `work_update_task` | `fulldev tasks create ...`, `fulldev tasks update ...`  |
+| Run an action                     | `work_complete_task`                   | `fulldev run complete_task ... --json`                  |
+| A service's settings and status   | `scan_list_sites`, `contacts_get_sync` | `fulldev services get scan --json`                      |
+| A service's read-only queries     | `scan_get_findings`                    | `fulldev services query scan findings ... --json`       |
 
-Call `overview` first: the organizations and, in one, the person's member id, the data types with their operations, the actions (those under `confirm` need the person's go-ahead) and the services. Describe a type or an action before you use it; name the operation, such as `create`, for only its part.
+## Start with what you may use
+
+With the tools, `account_get` gives the organizations and, in each, the person's member id and apps. With the CLI, run `fulldev overview --json` first: the organizations and, in one, the person's member id, the data types with their operations, the actions (those under `confirm` need the person's go-ahead) and the services. Describe a type or an action before you use it; name the operation, such as `create`, for only its part.
 
 When there are several organizations, name one in every call: `organization` (its slug) for a tool, `--org <slug>` for the CLI. Without it the server answers `ORGANIZATION_REQUIRED`. Ask the person which one when it is not clear, and never guess, since a change in the wrong organization reaches another business.
 
@@ -42,7 +44,7 @@ A row that has a page in Fulldev, such as a task, has its link as `dashboardUrl`
 
 ## Run actions
 
-An action does more than change a row's fields, such as sending, completing or inviting. Before an action listed under `confirm` in the overview, tell the person exactly what will happen and wait for their go-ahead: `invite_member`, for example, emails the person at once. Long work answers a `runId`.
+An action does more than change a row's fields, such as sending, completing or inviting. Before an action whose tool says to confirm first, or that the CLI's overview lists under `confirm`, tell the person exactly what will happen and wait for their go-ahead: `invite_member`, for example, emails the person at once. Long work answers a `runId`.
 
 Send an idempotency key with every create, update, action and service update, so a retry never does it twice: `idempotencyKey` for a tool; the CLI sends a new one itself. When one fails, as on a lost connection, retry with the same key, never a new one. `IDEMPOTENCY_CONFLICT` means that key was used for another request; `IN_PROGRESS` means the first is still running.
 
@@ -58,11 +60,11 @@ The person chose what this connection may do when they signed in: its organizati
 
 ## People and the account
 
-Everyone changes their own name and language with `update_profile`. Owners and admins read `members`, `invitations` and `teams`, and invite people as admin or member, resend and cancel invitations, change a member between admin and member, and give or take products and teams with the actions the overview lists, in that organization only. Confirm an invitation's address, role and organization with the person first. Making or changing owners, removing members, leaving or deleting an organization, API keys, AI connections, sign-in methods and passwords stay in the browser at app.full.dev: say so and do not look for another way.
+Everyone changes their own name and language with `update_profile` (the tool `account_update_profile`). Owners and admins read `members`, `invitations` and `teams`, and invite people as admin or member, resend and cancel invitations, change a member between admin and member, and give or take products and teams with the actions the overview lists, in that organization only. Confirm an invitation's address, role and organization with the person first. Making or changing owners, removing members, leaving or deleting an organization, API keys, AI connections, sign-in methods and passwords stay in the browser at app.full.dev: say so and do not look for another way.
 
 ## Business tools
 
-Fulldev Connect's actions work on the person's own connected accounts, such as `google_calendar_events`. An owner or admin allows them per kind of use, such as Google's documents, for everyone or in a role, on the Roles page; nothing is allowed until then. When an action is missing from the overview, nobody allowed it for the person, an admin blocked their business tools, or this connection only reads: the person sorts that out in the browser at app.full.dev. An action runs only once the person connected the account.
+Fulldev Connect's actions work on the person's own integrations, such as `google_calendar_events`, the tool `connect_google_calendar_events`. They need Connect, which the organization starts and gives the person, and an owner or admin allows them per kind of use, such as Google's documents, for everyone or in a role, in Connect under Access; nothing is allowed until then. When an action is missing from the overview or the tools, nobody gave the person Connect or allowed it, an admin blocked their business tools, or this connection only reads: the person sorts that out in the browser at app.full.dev. An action runs only once the person added the integration under Integrations in their settings. With several for one provider, pass `integration`: `INTEGRATION_REQUIRED` lists them.
 
 ## The CLI
 
