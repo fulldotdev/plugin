@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "fulldev": {
+      "type": "http",
+      "url": "https://app.full.dev/mcp"
+    }
+  }
+}
