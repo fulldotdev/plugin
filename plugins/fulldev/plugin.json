@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "fulldev",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Work with your Fulldev organization from your AI assistant: tasks and projects, websites and scans, messages, contacts and your connected business tools.",
   "author": {
     "name": "Fulldev",
@@ -40,32 +40,32 @@
             {
               "description": "See what Fulldev offers",
               "prompt": "What can you do for me in Fulldev?",
-              "tools_triggered": "overview",
-              "expected_behavior": "Name the Fulldev Review organization and summarize the data types, actions and services the test account may use, such as tasks and projects."
+              "tools_triggered": "account_get",
+              "expected_behavior": "Name the Fulldev Review organization and summarize the apps the test account may use there, such as Work's tasks and projects."
             },
             {
               "description": "List open tasks",
               "prompt": "Show my open tasks in Fulldev.",
-              "tools_triggered": "overview, list",
+              "tools_triggered": "work_list_tasks",
               "expected_behavior": "List the open tasks of the Fulldev Review organization, such as Prepare the spring campaign, with their due dates and links to Fulldev."
             },
             {
               "description": "Find a task by words",
               "prompt": "Find the Fulldev task about the spring campaign and tell me what it says.",
-              "tools_triggered": "search, get",
+              "tools_triggered": "work_search, work_get_task",
               "expected_behavior": "Find the task Prepare the spring campaign and return its notes, status and link without inventing details."
             },
             {
               "description": "Create a task",
               "prompt": "Create a Fulldev task to call the printer about the flyers, due next Friday.",
-              "tools_triggered": "describe, create",
+              "tools_triggered": "work_create_task",
               "expected_behavior": "Create an open task named Call the printer about the flyers with next Friday as its due date and return its link."
             },
             {
               "description": "Complete a task",
               "prompt": "Mark the Fulldev task Update the opening hours on the website as done.",
-              "tools_triggered": "search, describe, run_action",
-              "expected_behavior": "Find the task and complete it with the complete_task action, then confirm that it is done."
+              "tools_triggered": "work_search, work_complete_task",
+              "expected_behavior": "Find the task and complete it with work_complete_task, then confirm that it is done."
             }
           ],
           "negative": [
