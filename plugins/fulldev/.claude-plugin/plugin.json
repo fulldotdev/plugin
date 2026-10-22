@@ -1,0 +1,16 @@
+{
+  "name": "fulldev",
+  "displayName": "Fulldev",
+  "version": "1.0.0",
+  "description": "Work with your Fulldev organization from Claude: tasks and projects, websites and scans, messages, contacts and your connected business tools.",
+  "author": {
+    "name": "Fulldev",
+    "email": "contact@full.dev",
+    "url": "https://full.dev"
+  },
+  "homepage": "https://full.dev/en/ai-assistants/",
+  "repository": "https://github.com/fulldotdev/plugin",
+  "license": "MIT",
+  "privacyPolicyUrl": "https://full.dev/en/privacy/",
+  "keywords": ["fulldev", "tasks", "websites", "crm", "business tools"]
+}

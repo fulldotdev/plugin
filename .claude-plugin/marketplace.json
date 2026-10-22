@@ -1,0 +1,15 @@
+{
+  "name": "fulldev",
+  "description": "The Fulldev plugin: the Fulldev connector and skill for working with your Fulldev organization.",
+  "owner": {
+    "name": "Fulldev",
+    "email": "contact@full.dev"
+  },
+  "plugins": [
+    {
+      "name": "fulldev",
+      "source": "./plugins/fulldev",
+      "description": "Work with your Fulldev organization from Claude: tasks and projects, websites and scans, messages, contacts and your connected business tools."
+    }
+  ]
+}

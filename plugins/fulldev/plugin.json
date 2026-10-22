@@ -1,0 +1,94 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "fulldev",
+  "version": "1.0.0",
+  "description": "Work with your Fulldev organization from your AI assistant: tasks and projects, websites and scans, messages, contacts and your connected business tools.",
+  "author": {
+    "name": "Fulldev",
+    "email": "contact@full.dev",
+    "url": "https://full.dev"
+  },
+  "homepage": "https://full.dev/en/ai-assistants/",
+  "repository": "https://github.com/fulldotdev/plugin",
+  "license": "MIT",
+  "keywords": ["fulldev", "tasks", "websites", "crm", "business tools"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Fulldev",
+        "shortDescription": "Your Fulldev apps in chat",
+        "longDescription": "Work with your Fulldev organization from ChatGPT and Codex: find, create and update tasks and projects, check your websites and scans, read conversations and contacts, and use your connected business tools through Fulldev Connect. You sign in with your Fulldev account and choose the organizations and how far the assistant may go: read, make changes or administer. Every call is checked against your current access, and actions that send something or invite someone are confirmed with you first.",
+        "developerName": "Fulldev",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "websiteURL": "https://full.dev/en/ai-assistants/",
+        "supportURL": "https://full.dev/en/contact/",
+        "privacyPolicyURL": "https://full.dev/en/privacy/",
+        "termsOfServiceURL": "https://full.dev/en/terms/",
+        "defaultPrompt": [
+          "Show my open tasks in Fulldev.",
+          "Create a Fulldev task to call the printer, due next Friday.",
+          "What can you do for me in Fulldev?"
+        ],
+        "brandColor": "#1442E9",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "See what Fulldev offers",
+              "prompt": "What can you do for me in Fulldev?",
+              "tools_triggered": "overview",
+              "expected_behavior": "Name the Fulldev Review organization and summarize the data types, actions and services the test account may use, such as tasks and projects."
+            },
+            {
+              "description": "List open tasks",
+              "prompt": "Show my open tasks in Fulldev.",
+              "tools_triggered": "overview, list",
+              "expected_behavior": "List the open tasks of the Fulldev Review organization, such as Prepare the spring campaign, with their due dates and links to Fulldev."
+            },
+            {
+              "description": "Find a task by words",
+              "prompt": "Find the Fulldev task about the spring campaign and tell me what it says.",
+              "tools_triggered": "search, get",
+              "expected_behavior": "Find the task Prepare the spring campaign and return its notes, status and link without inventing details."
+            },
+            {
+              "description": "Create a task",
+              "prompt": "Create a Fulldev task to call the printer about the flyers, due next Friday.",
+              "tools_triggered": "describe, create",
+              "expected_behavior": "Create an open task named Call the printer about the flyers with next Friday as its due date and return its link."
+            },
+            {
+              "description": "Complete a task",
+              "prompt": "Mark the Fulldev task Update the opening hours on the website as done.",
+              "tools_triggered": "search, describe, run_action",
+              "expected_behavior": "Find the task and complete it with the complete_task action, then confirm that it is done."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unsupported payment",
+              "prompt": "Transfer €100 to my supplier from my Fulldev account."
+            },
+            {
+              "description": "Deleting the organization stays in the browser",
+              "prompt": "Delete my Fulldev organization."
+            },
+            {
+              "description": "Organization outside the connection",
+              "prompt": "Show the Fulldev tasks of an organization I am not a member of."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments."
+      },
+      "publication": {
+        "release_notes": "First release: Fulldev's tasks, projects, websites, scans, messages, contacts and connected business tools in ChatGPT and Codex, with a skill that explains how Fulldev works."
+      }
+    }
+  }
+}
