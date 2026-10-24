@@ -22,7 +22,7 @@ The connector receives only the calls the assistant makes, not your conversation
 - **Claude**: add Fulldev from the directory, or in Claude Code run `/plugin marketplace add fulldotdev/plugin` and `/plugin install fulldev@fulldev`.
 - **ChatGPT and Codex**: add Fulldev from the Plugins directory, or run `codex plugin marketplace add fulldotdev/plugin` and `codex plugin add fulldev@fulldev`.
 
-More, including Cursor: [full.dev/en/ai-assistants](https://full.dev/en/ai-assistants/).
+More: [full.dev/en/ai-assistants](https://full.dev/en/ai-assistants/).
 
 ## Support
 
