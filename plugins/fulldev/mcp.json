@@ -3,7 +3,12 @@
   "mcpServers": {
     "fulldev": {
       "type": "streamable-http",
-      "url": "https://app.full.dev/mcp"
+      "url": "https://app.full.dev/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": { "type": "oauth", "client": { "mode": "cimd" } }
+        }
+      }
     }
   }
 }
