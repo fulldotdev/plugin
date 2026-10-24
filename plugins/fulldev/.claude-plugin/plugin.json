@@ -1,7 +1,7 @@
 {
   "name": "fulldev",
   "displayName": "Fulldev",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Work with your Fulldev organization from Claude: tasks and projects, websites and scans, messages, contacts and your connected business tools.",
   "author": {
     "name": "Fulldev",
