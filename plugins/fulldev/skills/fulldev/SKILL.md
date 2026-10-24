@@ -14,6 +14,8 @@ Two routes reach the same tools with the same rules:
 - **The Fulldev tools**, when the Fulldev connector is connected in this app: use them.
 - **The `fulldev` CLI**, otherwise, in a terminal: `fulldev` when it is installed, else `npx -y fulldev <command>`. Each tool is a command: `<app>_<name>` is `fulldev <app> <name>`, with `-` for `_`. Add `--json` to every command whose result you read.
 
+In a terminal, use the CLI for many changes or a large result even when the connector is connected: a script runs the commands and keeps only what you need, instead of one tool call per row through the conversation. The CLI signs in once on its own ([Sign in](#sign-in)).
+
 | Step                              | Tool                                   | CLI command                                                    |
 | --------------------------------- | -------------------------------------- | -------------------------------------------------------------- |
 | What you may use                  | `account_get` and the tools you get    | `fulldev account get --json`, `fulldev tools`                  |
@@ -103,7 +105,7 @@ With `--json`, a result is the tool's JSON on stdout. An error is one JSON objec
 
 ### Sign in
 
-The person signs in with their Fulldev account on app.full.dev, such as with a code sent to their email, Google or a passkey, and chooses the connection's organizations, none ticked at first, and how far it may go:
+The person signs in with their Fulldev account on app.full.dev, such as with a code sent to their email, Google or a passkey, and chooses the connection's organizations and how far it may go. With one organization, it and Make changes are already chosen:
 
 ```sh
 fulldev login              # opens the browser
