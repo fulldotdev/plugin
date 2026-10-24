@@ -7,8 +7,9 @@ The Fulldev plugin for Claude, ChatGPT and Codex: the Fulldev connector (`https:
 /plugin marketplace add fulldotdev/plugin
 /plugin install fulldev@fulldev
 
-# Codex: add the marketplace, then install Fulldev from it under /plugins
+# Codex
 codex plugin marketplace add fulldotdev/plugin
+codex plugin add fulldev@fulldev
 ```
 
 This repository is published from Fulldev's own repository on each release; changes made here are overwritten. Questions: [contact@full.dev](mailto:contact@full.dev).
