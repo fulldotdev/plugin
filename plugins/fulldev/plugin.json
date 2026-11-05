@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "fulldev",
-  "version": "2.0.3",
-  "description": "Work with your Fulldev organization from your AI assistant: tasks and projects, websites and scans, messages, contacts and your connected business tools.",
+  "version": "2.1.0",
+  "description": "Work with your Fulldev organization from your AI assistant: tasks and projects, editing your website, scans, messages, contacts and your connected business tools.",
   "author": {
     "name": "Fulldev",
     "email": "contact@full.dev",
@@ -17,7 +17,7 @@
       "interface": {
         "displayName": "Fulldev",
         "shortDescription": "Your Fulldev apps in chat",
-        "longDescription": "Work with your Fulldev organization from ChatGPT and Codex: find, create and update tasks and projects, check your websites and scans, read conversations and contacts, and use your connected business tools through Fulldev Connect. You sign in with your Fulldev account and choose the organizations and how far the assistant may go: read, make changes or administer. Every call is checked against your current access, and actions that send something or invite someone are confirmed with you first.",
+        "longDescription": "Work with your Fulldev organization from ChatGPT and Codex: find, create and update tasks and projects, edit your website's text and photos and publish them, check your scans, read conversations and contacts, and use your connected business tools through Fulldev Connect. You sign in with your Fulldev account and choose the organizations and how far the assistant may go: read, make changes or administer. Every call is checked against your current access, and actions that publish, send something or invite someone are confirmed with you first.",
         "developerName": "Fulldev",
         "category": "Productivity",
         "capabilities": ["Read", "Write"],
@@ -27,7 +27,7 @@
         "termsOfServiceURL": "https://full.dev/en/terms/",
         "defaultPrompt": [
           "Show my open tasks in Fulldev.",
-          "Create a Fulldev task to call the printer, due next Friday.",
+          "Change the opening hours on my website.",
           "What can you do for me in Fulldev?"
         ],
         "brandColor": "#1442E9",
@@ -66,6 +66,24 @@
               "prompt": "Mark the Fulldev task Update the opening hours on the website as done.",
               "tools_triggered": "work_search, work_complete_task",
               "expected_behavior": "Find the task and complete it with work_complete_task, then confirm that it is done."
+            },
+            {
+              "description": "List a website's pages",
+              "prompt": "Which pages of my website can I edit in Fulldev?",
+              "tools_triggered": "sites_list, sites_open_branch, sites_list_files",
+              "expected_behavior": "Name the website Review website of the Fulldev Review organization and list its pages, such as Home, Over ons and Contact, without changing anything."
+            },
+            {
+              "description": "Save a change to a website",
+              "prompt": "On my website's English homepage, change the main heading to Open every weekday from 9:00 to 17:00 and show me the preview.",
+              "tools_triggered": "sites_list, sites_open_branch, sites_get_schema, sites_get_content, sites_update_content",
+              "expected_behavior": "Save the new heading in the English homepage, show the card of the change with a link to that page's preview, and say that it is saved but not published."
+            },
+            {
+              "description": "Publish a website's changes",
+              "prompt": "Publish my website changes.",
+              "tools_triggered": "sites_publish",
+              "expected_behavior": "After the person confirms, publish the saved change, then say it goes live within minutes and that it is published only once the website shows it."
             }
           ],
           "negative": [
@@ -87,7 +105,7 @@
         "commerce_description": "This plugin does not sell products or process payments."
       },
       "publication": {
-        "release_notes": "First release: Fulldev's tasks, projects, websites, scans, messages, contacts and connected business tools in ChatGPT and Codex, with a skill that explains how Fulldev works."
+        "release_notes": "Edit your website in chat: change its text, add a photo from your chat, see the changed pages on a card and publish, or undo a change."
       }
     }
   }

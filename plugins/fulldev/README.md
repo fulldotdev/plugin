@@ -1,6 +1,6 @@
 # Fulldev
 
-Work with your Fulldev organization from your AI assistant: find, create and update tasks and projects in Fulldev Work, check your websites and the findings of Fulldev Scan, read conversations in Fulldev Message and contacts in Fulldev Contacts, and use your own connected business tools, such as Google or Shopify, through Fulldev Connect. Owners and admins also manage their organization's members, invitations and teams.
+Work with your Fulldev organization from your AI assistant: find, create and update tasks and projects in Fulldev Work, edit and publish your website's text and photos in Fulldev Sites, check the findings of Fulldev Scan, read conversations in Fulldev Message and contacts in Fulldev Contacts, and use your own connected business tools, such as Google or Shopify, through Fulldev Connect. Owners and admins also manage their organization's members, invitations and teams.
 
 This plugin holds two things:
 
