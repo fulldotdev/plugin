@@ -16,17 +16,17 @@ Two routes reach the same tools with the same rules:
 
 In a terminal, use the CLI for many changes or a large result even when the connector is connected: a script runs the commands and keeps only what you need, instead of one tool call per row through the conversation. The CLI signs in once on its own ([Sign in](#sign-in)).
 
-| Step                              | Tool                                   | CLI command                                                    |
-| --------------------------------- | -------------------------------------- | -------------------------------------------------------------- |
-| What you may use                  | `account_get` and the tools you get    | `fulldev account get --json`, `fulldev tools`                  |
-| A tool's input                    | The tool's input schema                | `fulldev work list-tasks --help`                               |
-| Find rows by text                 | `work_search`, `contacts_search`       | `fulldev work search --query "launch plan" --json`             |
-| Rows by filters, a page at a time | `work_list_tasks`                      | `fulldev work list-tasks --status open --json`                 |
-| One row with all it has           | `work_get_task`                        | `fulldev work get-task --id <id> --json`                       |
-| Create or change a row            | `work_create_task`, `work_update_task` | `fulldev work create-task ...`, `fulldev work update-task ...` |
-| Run an action                     | `work_complete_task`                   | `fulldev work complete-task --task-id <id> --json`             |
-| A service's settings and status   | `scan_list_sites`, `contacts_get_sync` | `fulldev scan list-sites --json`                               |
-| A service's read-only queries     | `scan_get_findings`                    | `fulldev scan get-findings --site-id <id> --json`              |
+| Step                              | Tool                                   | CLI command                                                                                                                                  |
+| --------------------------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| What you may use                  | `account_get` and the tools you get    | `fulldev account get --json`, `fulldev tools`                                                                                                |
+| A tool's input                    | The tool's input schema                | `fulldev work list-tasks --help`                                                                                                             |
+| Find rows by text                 | `work_search`, `contacts_search`       | `fulldev work search --query "launch plan" --json`                                                                                           |
+| Rows by filters, a page at a time | `work_list_tasks`                      | `fulldev work list-tasks --status open --json`                                                                                               |
+| One row with all it has           | `work_get_task`                        | `fulldev work get-task --id <id> --json`                                                                                                     |
+| Create or change a row            | `work_create_task`, `work_update_task` | `fulldev work create-task ...`, `fulldev work update-task ...`                                                                               |
+| Run an action                     | `work_complete_task`                   | `fulldev work complete-task --task-id <id> --today 2026-11-02 --results '{"url":"https://github.com/acme/site/pull/7","title":"PR"}' --json` |
+| A service's settings and status   | `scan_list_sites`, `contacts_get_sync` | `fulldev scan list-sites --json`                                                                                                             |
+| A service's read-only queries     | `scan_get_findings`                    | `fulldev scan get-findings --site-id <id> --json`                                                                                            |
 
 ## Start with what you may use
 
@@ -75,7 +75,7 @@ A command's input is a JSON object as the argument, from a file with `-f <path>`
 ```sh
 fulldev work list-tasks --limit 20 --cursor <cursor> --json
 fulldev work create-task --title "Plan the launch" --due-on 2026-11-02 --json
-fulldev work update-task --id <id> --revision <revision> --status doing --json
+fulldev work update-task --id <id> --revision <revision> --due-on 2026-11-03 --json
 fulldev account invite-member '{"email":"sam@example.com","role":"member"}' --org <slug> --json
 ```
 
