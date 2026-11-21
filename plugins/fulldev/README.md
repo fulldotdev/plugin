@@ -11,7 +11,7 @@ The plugin runs no code on your computer and has no hooks.
 
 ## Sign in and access
 
-The first call asks you to sign in with your Fulldev account at app.full.dev. You then choose the organizations and how far the assistant may go: Read, Make changes or Administer. With one organization, it and Make changes are already chosen, so one click on Allow is enough. Every call is checked against those choices and your current access in Fulldev. Change or revoke the connection under AI connections on your Fulldev profile.
+The first call asks you to sign in with your Fulldev account at app.full.dev. You then choose how far the assistant may go: Read, Make changes or Administer. Make changes is already chosen, so one click on Allow is enough. The connection works in every organization you belong to, also ones you join later. Every call is checked against that choice and your current access in Fulldev. Change or revoke the connection under AI connections on your Fulldev profile.
 
 ## Data
 
