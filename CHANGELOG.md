@@ -1,5 +1,13 @@
 # @fulldotdev/plugin
 
+## 2.1.3
+
+### Patch Changes
+
+- 6d2869c: The login help, the skill and the plugin's description say an AI connection works in every organization you belong to, also ones you join later.
+- 340f432: Website editing builds its fields from the website's content schema, without saved forms, and the website checks each save.
+- 8fcbec5: The skill lets Fulldev's administrators change a customer organization's owner with `set_organization_owner`; everyone else still changes owners in the browser.
+
 ## 2.1.2
 
 ### Patch Changes
