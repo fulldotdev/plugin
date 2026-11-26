@@ -1,5 +1,13 @@
 # @fulldotdev/plugin
 
+## 2.1.4
+
+### Patch Changes
+
+- aa23e8b: Every member of an organization has every app: `account_get` no longer lists apps per organization, and a refused call answers `FORBIDDEN` or `NOT_A_MEMBER`, no longer `NOT_ENTITLED`.
+- aa23e8b: The skill says a task's comments, changes and links are its activity, now that a task has no notes of its own.
+- 2f4de28: A new skill, website-review, reviews a website in a browser and puts its findings, with screenshots and recordings, in a shared scan report, on top with a note and a summary.
+
 ## 2.1.3
 
 ### Patch Changes
